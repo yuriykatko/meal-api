@@ -1,16 +1,14 @@
-import path from 'path';
-import { promises as fs } from 'fs';
-import { useSearchParams } from 'next/navigation';
+import getAllData from "../../utils/getAllData";
 
 export default async function handler(req, res) {
-  //Find the absolute path of the json directory
-  const jsonDirectory = path.join(process.cwd(), 'json');
-  //Read the json data file data.json
-  const fileContents = await fs.readFile(jsonDirectory + '/data.json', 'utf8');
-  //Return the content of the data file in json format
+  const data = await getAllData();
+  const type = req.query.type;
 
-  const data = JSON.parse(fileContents);
-  const parsed = data.actors.filter(actor => actor.type === req.query.type);
+  let result = data.actors;
 
-  res.status(200).json(parsed);
+  if (type !== undefined) {
+    result = data.actors.filter((actor) => actor.type === type);
+  }
+
+  res.status(200).json(result);
 }
