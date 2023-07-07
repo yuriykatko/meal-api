@@ -1,6 +1,7 @@
 {
   "actors": [
     { "name": "Alice", "type": "tv" },
-    { "name": "Bob", "type": "commercial" }
+    { "name": "Bob", "type": "commercial" },
+    { "name": "Carol", "type": "movie star" }
   ]
 }
