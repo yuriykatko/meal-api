@@ -1,8 +1,5 @@
 import getAllData from "../../utils/getAllData";
-
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+import getRandomNumber from "../../utils/getRandomNumber";
 
 export default async function handler(req, res) {
   const data = await getAllData();
